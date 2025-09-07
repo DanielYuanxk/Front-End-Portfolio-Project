@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout, { mealLoader } from "./layout/AppLayout.jsx";
 import Home from "./pages/Home.jsx";
 import MealPlan from "./pages/MealPlan.jsx";
-import RecipeDetails from "./pages/RecipeDetails.jsx";
+import RecipeDetails, { detailsLoader } from "./pages/RecipeDetails.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       { path: "meal-plan", element: <MealPlan /> },
-      { path: "recipe/:id", element: <RecipeDetails /> },
+      { path: "recipe/:id", element: <RecipeDetails />, loader: detailsLoader },
       { path: "favorites", element: <Favorites /> },
       { path: "*", element: <NotFound /> },
     ],
