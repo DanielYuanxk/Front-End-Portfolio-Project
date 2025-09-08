@@ -1,13 +1,69 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const RecipeCard = ({ meal, children }) => {
+const RecipeCard = ({ meal, children, variant, addMealPlan }) => {
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const slots = ["breakfast", "lunch", "dinner"];
+  const [day, setDay] = useState("Monday");
+  const [slot, setSlot] = useState("breakfast");
   return (
     <div>
       <h2>{meal.strMeal}</h2>
       <img src={meal.strMealThumb} />
       <br />
       <Link to={`/recipe/${meal.idMeal}`}>Start Cooking</Link>
+      {variant === "home" && (
+        <>
+          {" "}
+          <div
+            style={{
+              border: "1px solid #ccc",
+              padding: 8,
+              marginBottom: 12,
+            }}
+          >
+            <label>
+              Day:
+              <select value={day} onChange={(e) => setDay(e.target.value)}>
+                {days.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <fieldset style={{ marginTop: 8 }}>
+            <legend>Slot</legend>
+            {slots.map((s) => {
+              return (
+                <label key={s} style={{ marginRight: 12 }}>
+                  <input
+                    type="radio"
+                    name={`slot-${meal.idMeal}`}
+                    value={s}
+                    checked={s === slot}
+                    onChange={(e) => {
+                      setSlot(e.target.value);
+                    }}
+                  />
+                  {s}
+                </label>
+              );
+            })}
+          </fieldset>
+        </>
+      )}
+      <button onClick={() => addMealPlan(meal, day, slot)}>Add to Plan</button>
       <div>{children}</div>
     </div>
   );

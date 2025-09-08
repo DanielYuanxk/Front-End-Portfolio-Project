@@ -5,14 +5,14 @@ import RecipeCard from "../components/RecipeCard";
 
 const Home = () => {
   const recipes = useRouteLoaderData("root");
-  const { addFavorite, removeFavorite, addMealPlan, isFavorite } =
+  const { addFavorite, removeFavorite, addMealPlan, isFavorite, mealPlan } =
     useOutletContext();
-
+  console.log(mealPlan);
   return (
     <div>
       <h1>Home</h1>
       <Form method="get">
-        <label for="i">
+        <label>
           <p>Search for something</p>
         </label>
         <input name="i" placeholder="Searching..." id="i" />
@@ -21,7 +21,12 @@ const Home = () => {
       <div>
         {recipes["meals"].map((meal) => {
           return (
-            <RecipeCard key={meal.idMeal} meal={meal}>
+            <RecipeCard
+              key={meal.idMeal}
+              meal={meal}
+              variant="home"
+              addMealPlan={addMealPlan}
+            >
               <button
                 onClick={() =>
                   isFavorite(meal) ? removeFavorite(meal) : addFavorite(meal)
@@ -29,7 +34,6 @@ const Home = () => {
               >
                 {isFavorite(meal) ? "Remove from favorite" : "Add to favorite"}
               </button>
-              <button onClick={() => addMealPlan(meal)}>Add to Plan</button>
             </RecipeCard>
           );
         })}
@@ -41,3 +45,11 @@ const Home = () => {
 };
 
 export default Home;
+
+// function handleConfirmAdd(meal) {
+//   if (!meal) return;
+//   setMealPlan((prev) => ({
+//     ...prev,
+//     [day]: { ...prev[day], [slot]: meal },
+//   }));
+// }

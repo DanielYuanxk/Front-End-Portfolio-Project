@@ -3,8 +3,24 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 const AppLayout = () => {
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const slots = ["breakfast", "lunch", "dinner"];
+  const emptyMealPlan = Object.fromEntries(
+    days.map((d) => [d, Object.fromEntries(slots.map((s) => [s, null]))])
+  );
+  console.log(emptyMealPlan);
+
   const [favorite, setFavorite] = useState([]);
-  const [mealPlan, setMealPlan] = useState([]);
+
+  const [mealPlan, setMealPlan] = useState(emptyMealPlan);
 
   const addFavorite = (meal) => {
     setFavorite((prev) =>
@@ -14,9 +30,16 @@ const AppLayout = () => {
   const isFavorite = (meal) => {
     return favorite.some((u) => u.idMeal === meal.idMeal) ? true : false;
   };
-  const addMealPlan = (meal) => {
-    setMealPlan((prev) => [...prev, meal]);
+  const addMealPlan = (meal, day, slot) => {
+    setMealPlan((prev) => ({
+      ...prev,
+      [day]: {
+        ...prev[day],
+        [slot]: meal,
+      },
+    }));
   };
+
   const removeFavorite = (meal) => {
     setFavorite((prev) => prev.filter((each) => each.idMeal != meal.idMeal));
   };
@@ -36,6 +59,7 @@ const AppLayout = () => {
             addMealPlan,
             removeFavorite,
             removeMealPlan,
+
             favorite,
             mealPlan,
           }}
