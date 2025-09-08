@@ -16,7 +16,6 @@ const AppLayout = () => {
   const emptyMealPlan = Object.fromEntries(
     days.map((d) => [d, Object.fromEntries(slots.map((s) => [s, null]))])
   );
-  console.log(emptyMealPlan);
 
   const [favorite, setFavorite] = useState([]);
 
