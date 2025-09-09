@@ -18,14 +18,23 @@ const MealPlan = () => {
     <div>
       {" "}
       <h2>Nothing yet</h2>
-      <div className=" grid grid-cols-3 auto-rows-7 px-4 w-[800px] h-[1200px] m-8">
+      <div className=" grid grid-cols-3 grid-rows-7 px-4 w-[800px] h-[1200px] m-8">
         {days.map((d) =>
           slots.map((s) => (
             <div
               key={`${d}-${s}`}
               className="flex border-solid outline-1 justify-center items-center  w-full h-full"
             >
-              empty
+              {mealPlan[d][s] === null ? (
+                <p>empty</p>
+              ) : (
+                <>
+                  <RecipeCard meal={mealPlan[d][s]} />
+                  <button onClick={() => removeMealPlan(d, s)}>
+                    Remove Meal
+                  </button>
+                </>
+              )}
             </div>
           ))
         )}

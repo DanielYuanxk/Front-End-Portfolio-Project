@@ -16,52 +16,64 @@ const RecipeCard = ({ meal, children, variant, addMealPlan }) => {
   const [day, setDay] = useState("Monday");
   const [slot, setSlot] = useState("breakfast");
   return (
-    <div>
+    <div className="w-full h-full min-w-0 min-h-0 ">
       <h2>{meal.strMeal}</h2>
-      <img src={meal.strMealThumb} />
+      <div className="min-w-0 min-h-0 grid place-items-center">
+        <img
+          className="block max-w-full max-h-full object-contain"
+          src={meal.strMealThumb}
+        />
+      </div>
       <br />
       <Link to={`/recipe/${meal.idMeal}`}>Start Cooking</Link>
 
       <br />
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: 8,
-          marginBottom: 12,
-        }}
-      >
-        <label>
-          Day:
-          <select value={day} onChange={(e) => setDay(e.target.value)}>
-            {days.map((d) => (
-              <option key={d} value={d}>
-                {d}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <fieldset style={{ marginTop: 8 }}>
-        <legend>Slot</legend>
-        {slots.map((s) => {
-          return (
-            <label key={s} style={{ marginRight: 12 }}>
-              <input
-                type="radio"
-                name={`slot-${meal.idMeal}`}
-                value={s}
-                checked={s === slot}
-                onChange={(e) => {
-                  setSlot(e.target.value);
-                }}
-              />
-              {s}
+      {(variant === "home" || variant === "favorite") && (
+        <>
+          {" "}
+          <div
+            style={{
+              border: "1px solid #ccc",
+              padding: 8,
+              marginBottom: 12,
+            }}
+          >
+            <label>
+              Day:
+              <select value={day} onChange={(e) => setDay(e.target.value)}>
+                {days.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
             </label>
-          );
-        })}
-      </fieldset>
+          </div>
+          <fieldset style={{ marginTop: 8 }}>
+            <legend>Slot</legend>
+            {slots.map((s) => {
+              return (
+                <label key={s} style={{ marginRight: 12 }}>
+                  <input
+                    type="radio"
+                    name={`slot-${meal.idMeal}`}
+                    value={s}
+                    checked={s === slot}
+                    onChange={(e) => {
+                      setSlot(e.target.value);
+                    }}
+                  />
+                  {s}
+                </label>
+              );
+            })}
+          </fieldset>
+          <button onClick={() => addMealPlan(meal, day, slot)}>
+            Add to Plan
+          </button>
+        </>
+      )}
 
-      <button onClick={() => addMealPlan(meal, day, slot)}>Add to Plan</button>
       <div>{children}</div>
     </div>
   );

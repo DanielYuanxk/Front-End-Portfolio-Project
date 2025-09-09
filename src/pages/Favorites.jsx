@@ -10,7 +10,12 @@ const Favorites = () => {
     return (
       <div>
         {favorite.map((each) => (
-          <RecipeCard meal={each} key={each.idMeal} addMealPlan={addMealPlan}>
+          <RecipeCard
+            meal={each}
+            key={each.idMeal}
+            addMealPlan={addMealPlan}
+            variant="favorite"
+          >
             <button onClick={() => removeFavorite(each)}>
               Remove from Favorites
             </button>

@@ -42,8 +42,11 @@ const AppLayout = () => {
   const removeFavorite = (meal) => {
     setFavorite((prev) => prev.filter((each) => each.idMeal != meal.idMeal));
   };
-  const removeMealPlan = (meal) => {
-    setMealPlan((prev) => prev.filter((each) => each.idMeal != meal.idMeal));
+  const removeMealPlan = (day, slot) => {
+    setMealPlan((prev) => ({
+      ...prev,
+      [day]: { ...prev[day], [slot]: null },
+    }));
   };
 
   return (
