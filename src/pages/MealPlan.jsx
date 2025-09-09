@@ -18,28 +18,39 @@ const MealPlan = () => {
   return (
     <div>
       {" "}
-      <h2>Nothing yet</h2>
-      <div className=" grid grid-cols-3 grid-rows-7 px-4 w-[800px] h-[1200px] m-8">
+      <div className=" h-[5rem]  flex items-center justify-center text-xl font-semibold ">
+        Meal Plan For The Week
+      </div>
+      <div className=" grid grid-cols-3 grid-rows-7 gap-2 px-4 w-[800px] h-[1200px] ml-8 mr-8 mb-8">
         {days.map((d) =>
           slots.map((s) => (
             <div
               key={`${d}-${s}`}
-              className="flex border-solid outline-1 justify-center items-center  w-full h-full"
+              className=" flex items-center justify-center rounded-lg border-1 border-sky-500   w-full h-full"
             >
               {mealPlan[d][s] === null ? (
-                <p>empty</p>
+                <p>{`${d} ${s}`}</p>
               ) : (
-                <div className="flex h-[calc(1200px/7)]">
-                  <img
-                    className=" object-contain "
-                    src={mealPlan[d][s].strMealThumb}
-                  />
-                  <div>
+                <div className="grid grid-cols-3 ">
+                  <div className="w-full col-span-2 rounded-lg p-2">
+                    <img
+                      className=" rounded-lg  col-span-2 "
+                      src={mealPlan[d][s].strMealThumb}
+                    />
+                  </div>
+
+                  <div className="grid grid-rows-2">
                     {" "}
-                    <Link to={`/recipe/${mealPlan[d][s].idMeal}`}>
+                    <Link
+                      to={`/recipe/${mealPlan[d][s].idMeal}`}
+                      className="  justify-self-center self-center 2 flex text-center justify-center items-center text-sm h-[80%] w-[80%] flex px-4 py-2 rounded-lg bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+                    >
                       Start Cooking
                     </Link>
-                    <button onClick={() => removeMealPlan(d, s)}>
+                    <button
+                      onClick={() => removeMealPlan(d, s)}
+                      className=" justify-self-center self-center flex text-center justify-center items-center text-sm h-[80%] w-[80%] px-4 py-2 rounded-lg bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+                    >
                       Remove Meal
                     </button>
                   </div>

@@ -25,24 +25,75 @@ const RecipeCard = ({
   const [slot, setSlot] = useState("breakfast");
   return (
     <div className="w-full h-full min-w-0 min-h-0 ">
-      <h2>{meal.strMeal}</h2>
       <div className="min-w-0 min-h-0 grid place-items-center">
         <img className="block w-full object-contain" src={meal.strMealThumb} />
       </div>
+      <h2 className="text-xl font-bold">{meal.strMeal}</h2>
       <br />
 
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: 8,
-          marginBottom: 12,
-        }}
-      >
-        <Link to={`/recipe/${meal.idMeal}`}>Start Cooking</Link>
-        <br />
+      <div className="grid grid-cols-2 gap-5">
+        {" "}
+        <Link
+          to={`/recipe/${meal.idMeal}`}
+          className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+        >
+          Start Cooking
+        </Link>
+        {variant === "home" && (
+          <button
+            className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+            onClick={() =>
+              isFavorite(meal) ? removeFavorite(meal) : addFavorite(meal)
+            }
+          >
+            {isFavorite(meal) ? (
+              <div>
+                {" "}
+                Favorite{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6 text-red-400 inline"
+                >
+                  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                </svg>
+              </div>
+            ) : (
+              <div>
+                {" "}
+                Favorite{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6 text-white inline"
+                >
+                  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                </svg>
+              </div>
+            )}
+          </button>
+        )}
+        {variant === "favorite" && (
+          <button
+            onClick={() => removeFavorite(meal)}
+            className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+          >
+            Remove Item
+          </button>
+        )}
+      </div>
+
+      <div className="mt-3">
+        {" "}
         <label>
-          Day:
-          <select value={day} onChange={(e) => setDay(e.target.value)}>
+          <p>Choose Day:</p>
+          <select
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+            className="border-1 border-sky-500 "
+          >
             {days.map((d) => (
               <option key={d} value={d}>
                 {d}
@@ -51,11 +102,12 @@ const RecipeCard = ({
           </select>
         </label>
       </div>
-      <fieldset style={{ marginTop: 8 }}>
-        <legend>Slot</legend>
+
+      <fieldset className="mt-3">
+        <p>Choose Time</p>
         {slots.map((s) => {
           return (
-            <label key={s} style={{ marginRight: 12 }}>
+            <label key={s} className="mr-8">
               <input
                 type="radio"
                 name={`slot-${meal.idMeal}`}
@@ -70,16 +122,15 @@ const RecipeCard = ({
           );
         })}
       </fieldset>
-      <button onClick={() => addMealPlan(meal, day, slot)}>Add to Plan</button>
-      {variant === "home" && (
+      <div className="mt-3 grid grid-cols-2 gap-5">
+        {" "}
         <button
-          onClick={() =>
-            isFavorite(meal) ? removeFavorite(meal) : addFavorite(meal)
-          }
+          className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+          onClick={() => addMealPlan(meal, day, slot)}
         >
-          {isFavorite(meal) ? "Remove from favorite" : "Add to favorite"}
+          Add to Plan
         </button>
-      )}
+      </div>
 
       <div>{children}</div>
     </div>

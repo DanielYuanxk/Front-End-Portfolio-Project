@@ -8,19 +8,21 @@ const Favorites = () => {
   console.log(mealPlan);
   if (favorite.length > 0) {
     return (
-      <div className="grid grid-cols-2 gap-8 m-8">
-        {favorite.map((each) => (
-          <RecipeCard
-            meal={each}
-            key={each.idMeal}
-            addMealPlan={addMealPlan}
-            variant="favorite"
-          >
-            <button onClick={() => removeFavorite(each)}>
-              Remove from Favorites
-            </button>
-          </RecipeCard>
-        ))}
+      <div>
+        <div className="font-bold text-3xl flex items-center justify-center h-[10rem]">
+          Your Favorite Meals
+        </div>
+        <div className="grid grid-cols-2 gap-8 m-8">
+          {favorite.map((each) => (
+            <RecipeCard
+              meal={each}
+              key={each.idMeal}
+              addMealPlan={addMealPlan}
+              variant="favorite"
+              removeFavorite={removeFavorite}
+            ></RecipeCard>
+          ))}
+        </div>
       </div>
     );
   } else {

@@ -10,8 +10,8 @@ const NavBar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "flex-1 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded text-center"
-              : "flex-1 px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 text-center active:bg-amber-500"
+              ? "flex-1 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-l rounded text-center"
+              : "flex-1 px-4 py-2 bg-amber-500 text-white font-semibold text-l rounded hover:bg-amber-600 text-center active:bg-green-500"
           }
         >
           <li>Home</li>
@@ -20,8 +20,8 @@ const NavBar = () => {
           to="/meal-plan"
           className={({ isActive }) =>
             isActive
-              ? "flex-1 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded text-center "
-              : "flex-1 px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 text-center active:bg-amber-500 "
+              ? "flex-1 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-l rounded text-center "
+              : "flex-1 px-4 py-2 bg-amber-500 text-white font-semibold text-l rounded hover:bg-amber-600 text-center active:bg-green-500 "
           }
         >
           <li>Meal Plan</li>
@@ -30,8 +30,8 @@ const NavBar = () => {
           to="/favorites"
           className={({ isActive }) =>
             isActive
-              ? "flex-1 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded text-center"
-              : "flex-1 px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 text-center active:bg-amber-500"
+              ? "flex-1 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-l rounded text-center"
+              : "flex-1 px-4 py-2 bg-amber-500 text-white font-semibold text-l rounded hover:bg-amber-600 text-center active:bg-green-500"
           }
         >
           <li>Favorite Recipes</li>

@@ -24,15 +24,13 @@ const Home = () => {
   console.log(mealPlan);
   return (
     <div className="flex-col justify-items-center m-4 ">
-      <h1 className="text-4xl font-semibold">Home</h1>
+      <h1 className="text-4xl font-semibold">Home</h1>{" "}
+      <h2 className="text-2xl font-semibold">Choose Your Main Ingredient</h2>
       <Form method="get">
-        <label>
-          <h2 className="text-2xl font-semibold">Search for something</h2>
-        </label>
         <input name="i" placeholder="Searching..." id="i" />
         <button
           type="submit"
-          className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
+          className="  px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 cursor-pointer active:bg-white active:text-sky-600 active:border-solid active:outline-1"
         >
           Search
         </button>
