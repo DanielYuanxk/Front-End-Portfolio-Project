@@ -21,6 +21,8 @@ const AppLayout = () => {
 
   const [mealPlan, setMealPlan] = useState(emptyMealPlan);
 
+  const [searchList, setSearchList] = useState([]);
+
   const addFavorite = (meal) => {
     setFavorite((prev) =>
       prev.some((u) => u.idMeal === meal.idMeal) ? prev : [...prev, meal]
@@ -61,6 +63,8 @@ const AppLayout = () => {
             addMealPlan,
             removeFavorite,
             removeMealPlan,
+            setSearchList,
+            searchList,
 
             favorite,
             mealPlan,

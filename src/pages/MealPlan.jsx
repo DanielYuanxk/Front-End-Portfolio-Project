@@ -1,6 +1,7 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+import { Link } from "react-router-dom";
 
 const MealPlan = () => {
   const { mealPlan, removeMealPlan } = useOutletContext();
@@ -28,12 +29,21 @@ const MealPlan = () => {
               {mealPlan[d][s] === null ? (
                 <p>empty</p>
               ) : (
-                <>
-                  <RecipeCard meal={mealPlan[d][s]} />
-                  <button onClick={() => removeMealPlan(d, s)}>
-                    Remove Meal
-                  </button>
-                </>
+                <div className="flex h-[calc(1200px/7)]">
+                  <img
+                    className=" object-contain "
+                    src={mealPlan[d][s].strMealThumb}
+                  />
+                  <div>
+                    {" "}
+                    <Link to={`/recipe/${mealPlan[d][s].idMeal}`}>
+                      Start Cooking
+                    </Link>
+                    <button onClick={() => removeMealPlan(d, s)}>
+                      Remove Meal
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           ))

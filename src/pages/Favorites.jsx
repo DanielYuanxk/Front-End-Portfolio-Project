@@ -8,7 +8,7 @@ const Favorites = () => {
   console.log(mealPlan);
   if (favorite.length > 0) {
     return (
-      <div>
+      <div className="grid grid-cols-2 gap-8 m-8">
         {favorite.map((each) => (
           <RecipeCard
             meal={each}
