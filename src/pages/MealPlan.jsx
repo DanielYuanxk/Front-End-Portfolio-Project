@@ -4,21 +4,34 @@ import RecipeCard from "../components/RecipeCard";
 
 const MealPlan = () => {
   const { mealPlan, removeMealPlan } = useOutletContext();
-  if (mealPlan.length > 0) {
-    return (
-      <div>
-        {mealPlan.map((each) => (
-          <RecipeCard meal={each} key={each.idMeal}>
-            <button onClick={() => removeMealPlan(each)}>
-              Remove Meal Plan
-            </button>
-          </RecipeCard>
-        ))}
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const slots = ["breakfast", "lunch", "dinner"];
+  return (
+    <div>
+      {" "}
+      <h2>Nothing yet</h2>
+      <div className=" grid grid-cols-3 auto-rows-7 px-4 w-[800px] h-[1200px] m-8">
+        {days.map((d) =>
+          slots.map((s) => (
+            <div
+              key={`${d}-${s}`}
+              className="flex border-solid outline-1 justify-center items-center  w-full h-full"
+            >
+              empty
+            </div>
+          ))
+        )}
       </div>
-    );
-  } else {
-    return <h2>Nothing yet</h2>;
-  }
+    </div>
+  );
 };
 
 export default MealPlan;

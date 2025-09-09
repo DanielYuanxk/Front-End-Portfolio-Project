@@ -10,13 +10,18 @@ const Home = () => {
   console.log(mealPlan);
   return (
     <div>
-      <h1>Home</h1>
+      <h1 className="text-4xl font-semibold">Home</h1>
       <Form method="get">
         <label>
-          <p>Search for something</p>
+          <h2 className="text-2xl font-semibold">Search for something</h2>
         </label>
         <input name="i" placeholder="Searching..." id="i" />
-        <button type="submit">Search</button>
+        <button
+          type="submit"
+          className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+        >
+          Search
+        </button>
       </Form>
       <div>
         {recipes["meals"].map((meal) => {
