@@ -1,12 +1,78 @@
-# React + Vite
+# Recipe Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A small React app for planning weekly meals. Search recipes by ingredient via [TheMealDB](https://www.themealdb.com/api.php), view details, add them to a weekly plan, and save favorites.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## Expanding the ESLint configuration
+- Vite + React
+- React Router
+- Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public/
+│ └── vite.svg
+├── README.md
+├── src/
+│ ├── App.css
+│ ├── App.jsx
+│ ├── assets/react.svg
+│ ├── components/
+│ │ ├── NavBar.jsx
+│ │ └── RecipeCard.jsx
+│ ├── index.css
+│ ├── layout/AppLayout.jsx
+│ ├── main.jsx
+│ └── pages/
+│ ├── ErrorPage.jsx
+│ ├── Favorites.jsx
+│ ├── Home.jsx
+│ ├── MealPlan.jsx
+│ ├── NotFound.jsx
+│ └── RecipeDetails.jsx
+└── vite.config.js
+
+## How It Works
+
+- **Home**: Enter an ingredient; results are fetched from TheMealDB and rendered as cards.  
+  <img src="screenshots/homePage.png" width="600"/>
+
+- **Recipe Detail**: Shows image, ingredients, and cooking instructions for a selected recipe.  
+  <img src="screenshots/recipeDetails.png" width="600"/>
+
+- **Meal Plan**: 7×3 grid (Mon–Sun × breakfast/lunch/dinner). Add/remove recipes per slot.  
+  <img src="screenshots/mealPlan.png" width="600"/>
+
+- **Favorites**: Save/remove recipes for quick access.  
+  <img src="screenshots/favorites.png" width="600"/>
+
+## UI / Responsiveness
+
+- Grids adjust: 1 column (mobile) → 2 columns (≥640px) → 3 columns (≥930px) using Tailwind arbitrary breakpoint.
+- Layouts are capped with `max-w-screen-lg` and centered with `mx-auto`.
+- Navbar stacks vertically on very small screens (`max-[511px]:flex-col`).
+
+## API
+
+- Ingredient search uses TheMealDB filter endpoint (via loader in `AppLayout.jsx`).
+- Recipe details are fetched by id (loader used in `RecipeDetails.jsx`).
+
+## Getting Started
+
+```bash
+# Clone
+git clone https://github.com/yourusername/recipe-planner.git
+cd recipe-planner
+
+# Install
+npm install
+
+# Develop
+npm run dev
+```

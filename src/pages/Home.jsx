@@ -35,7 +35,7 @@ const Home = () => {
           Search
         </button>
       </Form>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 [&>*]:min-w-0">
+      <div className="grid grid-cols-1 min-[640px]:grid-cols-2 min-[930px]:grid-cols-3 gap-6 mt-6 *:min-w-0">
         {searchList.map((meal) => {
           return (
             <RecipeCard
