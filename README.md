@@ -13,6 +13,7 @@ A small React app for planning weekly meals. Search recipes by ingredient via [T
 ## How It Works
 
 - **Home**: Enter an ingredient; results are fetched from TheMealDB and rendered as cards.
+
   <br/>
   <img src="screenshots/homePage.png" width="600"/>
 
