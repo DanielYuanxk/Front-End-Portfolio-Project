@@ -67,7 +67,7 @@ A small React app for planning weekly meals. Search recipes by ingredient via [T
 
 ```bash
 # Clone
-git clone https://github.com/yourusername/recipe-planner.git
+git clone https://github.com/DanielYuanxk/Front-End-Portfolio-Project
 cd recipe-planner
 
 # Install
