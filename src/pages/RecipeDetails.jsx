@@ -13,19 +13,25 @@ const RecipeDetails = () => {
     return { ingredient: ing, measurement: mea || "" };
   }).filter(Boolean);
   return (
-    <div className="flex flex-col justify-center items-center ">
-      <div className=" grid grid-cols-2 px-6 py-4 mt-4 border-[1.75px] border-sky-500 text-sm ml-8 mr-8 w-[780px]">
-        {" "}
-        <div className="pr-3">
-          {" "}
+    <div className="flex flex-col items-center">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-4 mt-4
+                  w-full max-w-screen-lg mx-auto text-sm
+                  border-[1.75px] border-sky-500"
+      >
+        <div className="pr-0 md:pr-3">
           <h1 className="text-xl font-bold">Recipe Details</h1>
-          <img src={obj.strMealThumb} className="w-[400px]" />
+          <img
+            src={obj.strMealThumb}
+            alt={obj.strMeal}
+            className="mt-2 w-full aspect-[4/3] object-cover rounded"
+          />
         </div>
-        <div className="pl-3">
-          {" "}
-          <h1 className=" text-xl  font-bold">{obj.strMeal}</h1>
-          <h2 className="font-bold">Ingredients:</h2>
-          <ul>
+
+        <div className="pl-0 md:pl-3">
+          <h1 className="text-xl font-bold">{obj.strMeal}</h1>
+          <h2 className="mt-2 font-bold">Ingredients:</h2>
+          <ul className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
             {ingredientAmountArray.map((each) => (
               <li key={each.ingredient}>
                 <strong>{each.ingredient}:</strong> {each.measurement}
@@ -33,10 +39,12 @@ const RecipeDetails = () => {
             ))}
           </ul>
         </div>
-        <div className="col-span-2 pt-4  ">
-          {" "}
-          <p className="text-xl font-semibold">Cooking Instructions: </p>
-          <p>{obj.strInstructions}</p>
+
+        <div className="pt-4 md:col-span-2">
+          <p className="text-xl font-semibold">Cooking Instructions:</p>
+          <p className="mt-1 whitespace-pre-line leading-relaxed">
+            {obj.strInstructions}
+          </p>
         </div>
       </div>
     </div>

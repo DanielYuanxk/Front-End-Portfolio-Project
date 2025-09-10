@@ -5,22 +5,23 @@ import RecipeCard from "../components/RecipeCard";
 const Favorites = () => {
   const { favorite, removeFavorite, addMealPlan, isFavorite, mealPlan } =
     useOutletContext();
-  console.log(mealPlan);
+
   if (favorite.length > 0) {
     return (
-      <div>
-        <div className="font-bold text-3xl flex items-center justify-center h-[10rem]">
+      <div className="w-full max-w-screen-lg mx-auto px-4 py-4">
+        <div className="font-bold text-3xl text-center py-10">
           Your Favorite Meals
         </div>
-        <div className="grid grid-cols-2 gap-8 m-8">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-2 [&>*]:min-w-0">
           {favorite.map((each) => (
             <RecipeCard
-              meal={each}
               key={each.idMeal}
-              addMealPlan={addMealPlan}
+              meal={each}
               variant="favorite"
+              addMealPlan={addMealPlan}
               removeFavorite={removeFavorite}
-            ></RecipeCard>
+            />
           ))}
         </div>
       </div>

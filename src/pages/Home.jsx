@@ -21,7 +21,7 @@ const Home = () => {
       setSearchList(recipes["meals"]);
     }
   }, [recipes["meals"]]);
-  console.log(mealPlan);
+
   return (
     <div className="flex flex-col items-center max-w-screen-lg mx-auto px-4 py-4">
       <h1 className="text-4xl font-semibold">Home</h1>{" "}
@@ -55,11 +55,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// function handleConfirmAdd(meal) {
-//   if (!meal) return;
-//   setMealPlan((prev) => ({
-//     ...prev,
-//     [day]: { ...prev[day], [slot]: meal },
-//   }));
-// }
