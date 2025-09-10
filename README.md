@@ -10,46 +10,23 @@ A small React app for planning weekly meals. Search recipes by ingredient via [T
 - React Router
 - Tailwind CSS
 
-## Project Structure
-
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── public/
-│ └── vite.svg
-├── README.md
-├── src/
-│ ├── App.css
-│ ├── App.jsx
-│ ├── assets/react.svg
-│ ├── components/
-│ │ ├── NavBar.jsx
-│ │ └── RecipeCard.jsx
-│ ├── index.css
-│ ├── layout/AppLayout.jsx
-│ ├── main.jsx
-│ └── pages/
-│ ├── ErrorPage.jsx
-│ ├── Favorites.jsx
-│ ├── Home.jsx
-│ ├── MealPlan.jsx
-│ ├── NotFound.jsx
-│ └── RecipeDetails.jsx
-└── vite.config.js
-
 ## How It Works
 
-- **Home**: Enter an ingredient; results are fetched from TheMealDB and rendered as cards.  
+- **Home**: Enter an ingredient; results are fetched from TheMealDB and rendered as cards.
+<br/>
+
   <img src="screenshots/homePage.png" width="600"/>
 
 - **Recipe Detail**: Shows image, ingredients, and cooking instructions for a selected recipe.  
+  <br/>
   <img src="screenshots/recipeDetails.png" width="600"/>
 
 - **Meal Plan**: 7×3 grid (Mon–Sun × breakfast/lunch/dinner). Add/remove recipes per slot.  
+  <br/>
   <img src="screenshots/mealPlan.png" width="600"/>
 
 - **Favorites**: Save/remove recipes for quick access.  
+  <br/>
   <img src="screenshots/favorites.png" width="600"/>
 
 ## UI / Responsiveness
