@@ -26,7 +26,11 @@ const Favorites = () => {
       </div>
     );
   } else {
-    return <h2>Nothing yet</h2>;
+    return (
+      <div className="flex justify-center items-center h-[500px]">
+        <div className="text-xl font-bold">Add some Favorites</div>
+      </div>
+    );
   }
 };
 

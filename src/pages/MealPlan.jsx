@@ -16,12 +16,12 @@ const MealPlan = () => {
   ];
   const slots = ["breakfast", "lunch", "dinner"];
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center w-full">
       {" "}
       <div className=" h-[5rem]  flex items-center justify-center text-xl font-semibold ">
         Meal Plan For The Week
       </div>
-      <div className=" grid grid-cols-3 grid-rows-7 gap-2 px-4 w-[800px] h-[1200px] ml-8 mr-8 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:[grid-template-rows:repeat(7,1fr)] gap-3 px-4 w-full max-w-screen-lg mx-auto mb-8">
         {days.map((d) =>
           slots.map((s) => (
             <div
@@ -31,10 +31,10 @@ const MealPlan = () => {
               {mealPlan[d][s] === null ? (
                 <p>{`${d} ${s}`}</p>
               ) : (
-                <div className="grid grid-cols-3 ">
-                  <div className="w-full col-span-2 rounded-lg p-2">
+                <div className="grid grid-cols-3 w-full">
+                  <div className="w-full col-span-2 rounded-lg p-2 w-full">
                     <img
-                      className=" rounded-lg  col-span-2 "
+                      className=" rounded-lg  col-span-2 h-full"
                       src={mealPlan[d][s].strMealThumb}
                     />
                   </div>

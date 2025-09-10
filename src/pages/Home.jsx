@@ -23,10 +23,10 @@ const Home = () => {
   }, [recipes["meals"]]);
   console.log(mealPlan);
   return (
-    <div className="flex-col justify-items-center m-4 ">
+    <div className="flex flex-col items-center max-w-screen-lg mx-auto px-4 py-4">
       <h1 className="text-4xl font-semibold">Home</h1>{" "}
-      <h2 className="text-2xl font-semibold">Choose Your Main Ingredient</h2>
-      <Form method="get">
+      <h2 className="text-2xl font-semibold mt-2">Pick Main Ingredient</h2>
+      <Form method="get" className="mt-2">
         <input name="i" placeholder="Searching..." id="i" />
         <button
           type="submit"
@@ -35,7 +35,7 @@ const Home = () => {
           Search
         </button>
       </Form>
-      <div className="grid grid-cols-2 gap-8 m-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 [&>*]:min-w-0">
         {searchList.map((meal) => {
           return (
             <RecipeCard

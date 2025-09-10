@@ -52,9 +52,9 @@ const AppLayout = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center w-full">
       <NavBar />
-      <main>
+      <main className="w-full">
         {" "}
         <Outlet
           context={{
